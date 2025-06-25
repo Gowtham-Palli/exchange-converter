@@ -1,81 +1,176 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #fecaca;
+    background: linear-gradient(135deg, #fecaca 0%, #f472b6 100%);
+    animation: bgFade 3s ease-in;
 }
 
-.container{
-    background-color: white;
-    width: 40vh;
-    min-height: 45vh;
-    padding: 2rem;
-    border-radius: 1.5rem;
+@keyframes bgFade {
+    from { filter: blur(8px) brightness(0.7);}
+    to { filter: blur(0) brightness(1);}
 }
 
-form{
-    margin: 2rem 0 1rem 0;
+.container {
+    background: rgba(255,255,255,0.95);
+    width: 420px;
+    min-height: 520px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(219,39,119,0.15), 0 1.5px 8px 0 rgba(0,0,0,0.05);
+    animation: popIn 0.8s cubic-bezier(.25,1.25,.5,1.1);
+    transition: box-shadow 0.3s;
 }
 
-form input,select,button{
+@keyframes popIn {
+    0% { transform: scale(0.85) translateY(40px); opacity: 0;}
+    100% { transform: scale(1) translateY(0); opacity: 1;}
+}
+
+.container:hover {
+    box-shadow: 0 12px 40px 0 rgba(219,39,119,0.30), 0 2px 12px 0 rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    color: #db2777;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+form {
+    margin: 2.5rem 0 1.5rem 0;
+}
+
+form input, select, button {
     width: 100%;
     border: none;
     outline: none;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
+    transition: box-shadow 0.2s, border 0.2s;
 }
 
-form input{
-    border: 1px solid lightgray;
-    font-size: 1rem;
-    padding-left: 0.5rem;
-    height: 3rem;
+form input {
+    border: 2px solid #f472b6;
+    font-size: 1.25rem;
+    padding-left: 0.75rem;
+    height: 3.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px 0 rgba(219,39,119,0.07);
+    transition: border 0.2s;
 }
 
-.dropdown{
+form input:focus {
+    border: 2px solid #db2777;
+    box-shadow: 0 2px 12px 0 rgba(219,39,119,0.12);
+}
+
+.dropdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
+    gap: 1.5rem;
 }
 
-.dropdown i{
-    font-size: 1.5rem;
-    margin-top: 1rem;
-}
-
-.select-container img{
-    max-width: 2rem;
-}
-
-.select-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: .5rem;
-    width: 6rem;
-    border: 1px solid lightgray;
-}
-
-.select-container select{
-    font-size: 1rem;
-    width: auto;
-}
-
-.msg{
-    margin: 2rem 0 2rem 0;
-}
-
-button{
-    height: 3rem;
-    background-color: #db2777;
-    color: white;
-    font-size: 1.15rem;
+.dropdown i {
+    font-size: 2.2rem;
+    margin-top: 1.8rem;
+    color: #db2777;
     cursor: pointer;
+    transition: transform 0.3s;
+    animation: rotateIn 0.7s;
 }
 
+.dropdown i:hover {
+    transform: rotate(180deg) scale(1.2);
+}
+
+@keyframes rotateIn {
+    from { transform: rotate(-90deg) scale(0.5);}
+    to { transform: rotate(0) scale(1);}
+}
+
+.select-container img {
+    max-width: 2.5rem;
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 1px 4px #f472b6aa);
+    transition: transform 0.2s;
+}
+
+.select-container img:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    border-radius: 0.75rem;
+    width: 8rem;
+    border: 2px solid #f472b6;
+    background: #fdf2f8;
+    padding: 0.4rem 0.6rem;
+    box-shadow: 0 1px 6px 0 rgba(219,39,119,0.08);
+    transition: border 0.2s;
+}
+
+.select-container select {
+    font-size: 1.1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #db2777;
+    font-weight: bold;
+}
+
+.msg {
+    margin: 2.5rem 0 2.5rem 0;
+    text-align: center;
+    font-size: 1.15rem;
+    color: #db2777;
+    min-height: 2.2rem;
+    transition: color 0.3s;
+    animation: fadeIn 0.8s;
+}
+
+button {
+    height: 3.5rem;
+    background: linear-gradient(90deg, #db2777 0%, #f472b6 100%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px 0 rgba(219,39,119,0.12);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #f472b6 0%, #db2777 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 18px 0 rgba(219,39,119,0.18);
+}
+
+.fade-in {
+    animation: fadeInMsg 0.7s;
+}
+@keyframes fadeInMsg {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
